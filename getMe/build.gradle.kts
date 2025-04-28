@@ -3,7 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 apply(plugin = "maven-publish") // 👈
-version = "1.0.0"
+version = "1.2.0"
+group = "com.github.JayP-zs"
 android {
     namespace = "com.example.getme"
     compileSdk = 35
