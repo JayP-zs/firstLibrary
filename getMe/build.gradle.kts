@@ -1,9 +1,10 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
 }
-apply(plugin = "maven-publish") // 👈
-version = "1.2.0"
+
+version = "1.2.1"
 group = "com.github.JayP-zs"
 android {
     namespace = "com.example.getme"
@@ -42,4 +43,18 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.github.JayP-zs"
+                artifactId = "firstLibrary"
+                version = "1.2.1"
+            }
+        }
+    }
 }
